@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/16x16/fileNewAction.png</file>
+        <file>icons/16x16/fileOpenAction.png</file>
+        <file>icons/16x16/fileSaveAction.png</file>
+        <file>icons/16x16/fileSaveAsAction.png</file>
+        <file>icons/16x16/fileEditMolFileAction.png</file>
+        <file>icons/16x16/viewViewerSettingsAction.png</file>
+        <file>icons/16x16/moleculeExportImageAction.png</file>
+        <file>icons/16x16/viewMoleculeAction.png</file>
+        <file>icons/16x16/viewSummaryAction.png</file>
+        <file>icons/16x16/windowsCascadeAction.png</file>
+        <file>icons/16x16/windowsTileAction.png</file>
+        <file>icons/16x16/helpHelpAction.png</file>
+        <file>icons/16x16/done.png</file>
+        <file>icons/16x16/notDone.png</file>
+    </qresource>
+</RCC>

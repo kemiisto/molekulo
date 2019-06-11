@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/multistep_toolbar/next.png</file>
+        <file>icons/multistep_toolbar/pause.png</file>
+        <file>icons/multistep_toolbar/play.png</file>
+        <file>icons/multistep_toolbar/previous.png</file>
+        <file>icons/multistep_toolbar/stop.png</file>
+    </qresource>
+</RCC>

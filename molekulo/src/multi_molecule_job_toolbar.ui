@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MultiMoleculeJobToolbar</class>
+ <widget class="QToolBar" name="MultiMoleculeJobToolbar">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>28</width>
+    <height>28</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="iconSize">
+   <size>
+    <width>16</width>
+    <height>16</height>
+   </size>
+  </property>
+  <action name="actionPlayPause">
+   <property name="icon">
+    <iconset resource="../../rsrc/multistep_toolbar.qrc">
+     <normaloff>:/icons/multistep_toolbar/play.png</normaloff>
+     <normalon>:/icons/multistep_toolbar/pause.png</normalon>:/icons/multistep_toolbar/play.png</iconset>
+   </property>
+   <property name="text">
+    <string>PlayPause</string>
+   </property>
+   <property name="toolTip">
+    <string>Play/Pause</string>
+   </property>
+  </action>
+  <addaction name="actionPlayPause"/>
+ </widget>
+ <resources>
+  <include location="../../rsrc/multistep_toolbar.qrc"/>
+ </resources>
+ <connections/>
+</ui>
