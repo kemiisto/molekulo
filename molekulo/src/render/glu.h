@@ -19,15 +19,14 @@
   along with Molekulo. If not, see <http://www.gnu.org/licenses/>.
 
  **********************************************************************/
-
-#include "io/input_string_stream.h"
-#include "input_string_stream_p.h"
-
-kemiisto::io::input_string_stream::input_string_stream(const std::string& string) :
-    input_stream(new input_string_stream_private(string))
-{
-}
-
-kemiisto::io::input_string_stream::~input_string_stream()
-{
-}
+  
+#ifdef __APPLE__
+#include "OpenGL/glu.h"
+#elif __linux
+#include "GL/glu.h"
+#elif _WIN32
+#ifdef _MSC_VER
+#include <windows.h>
+#endif
+#include <gl\glu.h>
+#endif

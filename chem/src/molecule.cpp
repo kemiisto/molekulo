@@ -49,12 +49,12 @@ struct ccio::molecule::molecule_private
 };
 
 ccio::molecule::molecule() :
-    p(new molecule_private())
+    p(std::make_unique<molecule_private>())
 {
 }
 
 ccio::molecule::molecule(const ccio::molecule& molecule) :
-    p(new molecule_private(*molecule.p))
+    p(std::make_unique<molecule_private>(*molecule.p))
 {
 }
 

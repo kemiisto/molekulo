@@ -20,14 +20,14 @@
 
  **********************************************************************/
 
-#include "io/input_string_stream.h"
-#include "input_string_stream_p.h"
-
-kemiisto::io::input_string_stream::input_string_stream(const std::string& string) :
-    input_stream(new input_string_stream_private(string))
-{
-}
-
-kemiisto::io::input_string_stream::~input_string_stream()
-{
-}
+#ifdef __APPLE__
+#define GL_SILENCE_DEPRECATION
+#include "OpenGL/gl.h"
+#elif __linux
+#include "GL/gl.h"
+#elif _WIN32
+#ifdef _MSC_VER
+#include <windows.h>
+#endif
+#include <gl\gl.h>
+#endif

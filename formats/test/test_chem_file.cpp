@@ -57,7 +57,7 @@ void testDetectionInDir(ccio::text_file::type type, const boost::filesystem::pat
     boost::filesystem::directory_iterator end;
     for (boost::filesystem::directory_iterator it(dir); it != end; ++it) {
         if (it->path().extension() == ext) {
-            std::unique_ptr<ccio::text_file> chemFile = ccio::text_file::newInstance(it->path().string());
+            std::unique_ptr<ccio::text_file> chemFile = ccio::text_file::new_instance(it->path().string());
             switch (type) {
             case ccio::text_file::type::dalton_dal_file:
                 break;

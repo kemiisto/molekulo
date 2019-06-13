@@ -73,7 +73,7 @@ int main(int argc, char* argv[])
     QString filePath1 = QString::fromStdString(
         (samplesDir()/"gaussian"/"h2o"/"sp"/"hf_cart_p.out").string()
     );
-    std::unique_ptr<ccio::text_file> textFile1 = ccio::text_file::newInstance(filePath1.toStdString());
+    std::unique_ptr<ccio::text_file> textFile1 = ccio::text_file::new_instance(filePath1.toStdString());
     textFile1->read();
     ccio::molecule_file* p1 = dynamic_cast<ccio::molecule_file*>(textFile1.get());
     if (p1 != nullptr) {
@@ -88,7 +88,7 @@ int main(int argc, char* argv[])
     //     // (samplesDir()/"dalton"/"h2o"/"sp"/"hf_max_diis.out").string()
     //     (samplesDir()/"dalton"/"h2o"/"sp"/"b3lyp_nodiis_h2o.out").string()
     // );
-    // std::unique_ptr<ccio::text_file> textFile2 = ccio::text_file::newInstance(filePath2.toStdString());
+    // std::unique_ptr<ccio::text_file> textFile2 = ccio::text_file::new_instance(filePath2.toStdString());
     // textFile2->read();
     // ccio::molecule_file* p2 = dynamic_cast<ccio::molecule_file*>(textFile2.get());
     // if (p2 != nullptr) {

@@ -48,7 +48,7 @@ namespace ccio
 
         static const std::map<ccio::text_file::type, std::string> fileTypeToString;
 
-        static std::unique_ptr<ccio::text_file> newInstance(const std::string& absolute_file_path);
+        static std::unique_ptr<ccio::text_file> new_instance(const std::string &absolute_file_path);
 
         const std::string& absolute_file_path() const;
 

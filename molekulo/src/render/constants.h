@@ -1,6 +1,5 @@
 /**********************************************************************
-
-  Copyright (C) 2008-2015 Anton Simakov
+  Copyright (C) 2008-2014 Anton Simakov
 
   This file is part of Molekulo.
   For more information, see <http://code.google.com/p/molekulo/>
@@ -20,14 +19,16 @@
 
  **********************************************************************/
 
-#include "io/input_string_stream.h"
-#include "input_string_stream_p.h"
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
-kemiisto::io::input_string_stream::input_string_stream(const std::string& string) :
-    input_stream(new input_string_stream_private(string))
+#include "render/gl.h"
+
+namespace molekulo
 {
+    const GLfloat bondThikness = 0.075f;
+    const GLfloat stickThikness = 0.15f;
+    const GLfloat selectionRadius = 0.10f;
 }
 
-kemiisto::io::input_string_stream::~input_string_stream()
-{
-}
+#endif // CONSTANTS_H

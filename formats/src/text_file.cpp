@@ -46,7 +46,7 @@ std::ostream& ccio::operator<<(std::ostream& ostream, ccio::text_file::type file
     if (it != ccio::text_file::fileTypeToString.end()) {
         ostream << it->second;
     } else {
-        throw std::logic_error("Uknown file type.");
+        throw std::logic_error("Unknown file type.");
     }
     return ostream;
 }
@@ -55,7 +55,7 @@ std::vector<std::string> words(ccio::text_file::type type);
 int number_of_occurrences(const std::vector<std::string>& words, const std::string& line);
 ccio::text_file::type file_type(const std::string& absolute_file_path);
 
-std::unique_ptr<ccio::text_file> ccio::text_file::newInstance(const std::string& absolute_file_path)
+std::unique_ptr<ccio::text_file> ccio::text_file::new_instance(const std::string &absolute_file_path)
 {
     LOG(info) << "Opening " << absolute_file_path << "...";
 

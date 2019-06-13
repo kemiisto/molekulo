@@ -55,7 +55,7 @@ struct ccio::element::element_private
 
 ccio::element::element(unsigned int atomic_number, const std::string& chemical_symbol,
         const std::string& name) :
-    p(new element_private(atomic_number, chemical_symbol, name))
+    p(std::make_unique<element_private>(atomic_number, chemical_symbol, name))
 {
 }
 

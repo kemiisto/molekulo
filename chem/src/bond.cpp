@@ -45,7 +45,7 @@ struct ccio::bond::bond_private
 
 ccio::bond::bond(const ccio::molecule& molecule,
         std::size_t begin_atom_index, std::size_t end_atom_index, int bond_order) :
-    p(new bond_private(molecule, begin_atom_index, end_atom_index, bond_order))
+    p(std::make_unique<bond_private>(molecule, begin_atom_index, end_atom_index, bond_order))
 {
 }
 

@@ -20,14 +20,47 @@
 
  **********************************************************************/
 
-#include "io/input_string_stream.h"
-#include "input_string_stream_p.h"
+#ifndef DISPLAY_SETTINGS_DIALOG_H
+#define DISPLAY_SETTINGS_DIALOG_H
 
-kemiisto::io::input_string_stream::input_string_stream(const std::string& string) :
-    input_stream(new input_string_stream_private(string))
+#include <memory>
+
+#include <QDialog>
+
+namespace Ui
 {
+    class ViewerSettingsDialog;
 }
 
-kemiisto::io::input_string_stream::~input_string_stream()
+namespace molekulo
 {
+    class Viewer;
+
+    class ViewerSettingsDialog : public QDialog
+    {
+        Q_OBJECT
+
+    public:
+        explicit ViewerSettingsDialog(molekulo::Viewer* parent = 0);
+        ~ViewerSettingsDialog();
+
+    public slots:
+        void showColorDialog();
+
+    private:
+        std::unique_ptr<Ui::ViewerSettingsDialog> ui;
+        molekulo::Viewer* viewer;
+
+        void setupQualitySlider();
+        void setupProjectionComboBox();
+        void setupViewComboBox();
+        
+        void setupLabelsOnAtomsTypeComboBox();
+        void setupLabelsOnAtomsFontComboBox();
+
+        void setupBackgroundColorPushButton();
+    };
 }
+
+
+#endif // DISPLAY_SETTINGS_DIALOG_H

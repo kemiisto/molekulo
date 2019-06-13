@@ -49,7 +49,7 @@ struct ccio::atom::atom_private
 ccio::atom::atom(const ccio::molecule& molecule,
         unsigned int atomic_number, unsigned int mass_number,
         const Eigen::Vector3d& centre) :
-    p(new atom_private(molecule, atomic_number, mass_number, centre))
+    p(std::make_unique<atom_private>(molecule, atomic_number, mass_number, centre))
 {
 }
 

@@ -20,14 +20,20 @@
 
  **********************************************************************/
 
-#include "io/input_string_stream.h"
-#include "input_string_stream_p.h"
+#include "render/primitive.h"
 
-kemiisto::io::input_string_stream::input_string_stream(const std::string& string) :
-    input_stream(new input_string_stream_private(string))
+class molekulo::PrimitivePrivate
+{
+public:
+    PrimitivePrivate() {}
+};
+
+molekulo::Primitive::Primitive(QObject* parent) : QObject(parent),
+    d(new PrimitivePrivate), m_type(Primitive::OtherType), m_id(FALSE_ID), m_index(FALSE_ID)
 {
 }
 
-kemiisto::io::input_string_stream::~input_string_stream()
+molekulo::Primitive::~Primitive()
 {
+    delete d;
 }

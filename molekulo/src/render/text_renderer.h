@@ -20,14 +20,35 @@
 
  **********************************************************************/
 
-#include "io/input_string_stream.h"
-#include "input_string_stream_p.h"
+#ifndef TEXT_RENDERER_H
+#define TEXT_RENDERER_H
 
-kemiisto::io::input_string_stream::input_string_stream(const std::string& string) :
-    input_stream(new input_string_stream_private(string))
+#include <Eigen/Core>
+#include <QString>
+
+namespace molekulo
 {
+    class CharRenderer;
+    class Viewer;
+
+    class TextRenderer
+    {
+    public:
+        TextRenderer();
+        ~TextRenderer();
+
+        void begin(Viewer *widget);
+        void end();
+
+        int draw(const Eigen::Vector3f& pos, const QString& string);
+        int draw(int x, int y, const QString& string);
+
+        bool isActive();
+
+    private:
+        class TextRendererPrivate;
+        TextRendererPrivate * const d;
+    };
 }
 
-kemiisto::io::input_string_stream::~input_string_stream()
-{
-}
+#endif // TEXT_RENDERER_H

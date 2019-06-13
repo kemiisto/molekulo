@@ -60,7 +60,7 @@ void ccio::test_dir(const boost::filesystem::path& dir,
     boost::filesystem::directory_iterator end;
     for (boost::filesystem::directory_iterator it(dir); it != end; ++it) {
         if (it->path().extension() == extension && file_size(it->path()) < max_file_size) {
-            std::unique_ptr<ccio::text_file> chemFile = ccio::text_file::newInstance(it->path().string());
+            std::unique_ptr<ccio::text_file> chemFile = ccio::text_file::new_instance(it->path().string());
             chemFile->read();
         }
     }

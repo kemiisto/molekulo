@@ -33,20 +33,14 @@
 #include <QMessageBox>
 #include <QSpinBox>
 #include <QSplitter>
+#if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
 #include <QtConcurrent/QtConcurrentFilter>
 #include <QtConcurrent/QtConcurrentRun>
+#else
+#include <QtCore/QtConcurrentFilter>
+#include <QtCore/QtConcurrentRun>
+#endif
 
-#include <Qt3DCore/QEntity>
-#include <Qt3DCore/QTransform>
-#include <Qt3DRender/QCamera>
-#include <Qt3DRender/QMaterial>
-#include <Qt3DExtras/Qt3DWindow>
-#include <Qt3DExtras/QForwardRenderer>
-#include <Qt3DExtras/QPhongMaterial>
-#include <Qt3DExtras/QSphereMesh>
-
-#include "chem/atom.h"
-#include "chem/element.h"
 #include "formats/out_file.h"
 #include "formats/dalton/dalton_dal_file.h"
 #include "formats/gaussian/gaussian_out_file.h"
@@ -54,22 +48,9 @@
 #include "dal_file_window.h"
 #include "jobs_panel.h"
 #include "multi_molecule_job_toolbar.h"
+#include "viewer_settings_dialog.h"
 
-QColor atomColor(const ccio::atom& atom)
-{
-    const std::vector<unsigned char>& c = atom.element().rgb();
-    return QColor(c[0], c[1], c[2]);
-}
-
-float atomDrawRadius(const ccio::atom& atom)
-{
-    // FIX! isotope().exact_mass()!
-#ifdef Q_CC_MSVC
-    return pow(atom.element().atomicWeight(), 1.0f / 3.0f) / 10.0f + 0.2f;
-#else
-    return cbrt(atom.element().atomic_weight()) / 10.0f + 0.2f;
-#endif
-}
+#include "render/viewer.h"
 
 bool isMoleculeWindow(QWidget* widget)
 {
@@ -81,23 +62,20 @@ struct molekulo::MoleculeWindow::MoleculeWindowPrivate
     Ui::MoleculeWindow ui;
     molekulo::JobsPanel* jobsPanel;
     QVBoxLayout* viewerVBoxLayout;
+    molekulo::Viewer* viewer;
     QTextEdit* summaryTextEdit;
-    QWidget* viewer;
 
-    std::unique_ptr<ccio::molecule_file> moleculeFile;
     std::ostringstream os;
     QString dir;   
 
     MoleculeWindowPrivate(std::unique_ptr<ccio::molecule_file> moleculeFile) :
         ui(),
         jobsPanel(nullptr),
-        viewerVBoxLayout(new QVBoxLayout),
+        viewerVBoxLayout(new QVBoxLayout()),
+        viewer(new molekulo::Viewer(std::move(moleculeFile))),
         summaryTextEdit(new QTextEdit),
-        viewer(nullptr),
-        moleculeFile(std::move(moleculeFile)),
         os(),
-        dir()
-        // dir(QString::fromStdString(moleculeFile->directory()))
+        dir(QString::fromStdString(viewer->chemFile()->directory()))
     {}
 };
 
@@ -105,11 +83,15 @@ molekulo::MoleculeWindow::MoleculeWindow(std::unique_ptr<ccio::molecule_file> mo
     QMainWindow(),
     p(new MoleculeWindowPrivate(std::move(moleculeFile)))
 {
-    setAttribute(Qt::WA_DeleteOnClose);    
+    setAttribute(Qt::WA_DeleteOnClose);
+    QSettings settings;
+    p->viewer->readSettings(settings);
+    
     p->summaryTextEdit->setReadOnly(true);
 
-    setWindowTitle(QString::fromStdString(p->moleculeFile->file_name()) + " - Molekulo " +
+    setWindowTitle(QString::fromStdString(p->viewer->chemFile()->file_name()) + " - Molekulo " +
                    QCoreApplication::applicationVersion());
+    // p->ui.statusBar.showMessage(QString::fromStdString());
 
     p->ui.setupUi(this);
 
@@ -121,46 +103,7 @@ molekulo::MoleculeWindow::MoleculeWindow(std::unique_ptr<ccio::molecule_file> mo
     viewActionGroup->addAction(p->ui.viewMoleculeAction);
     viewActionGroup->addAction(p->ui.viewSummaryAction);
 
-    ccio::out_file* outFile = dynamic_cast<ccio::out_file*>(p->moleculeFile.get());
-
-    Qt3DExtras::Qt3DWindow* view = new Qt3DExtras::Qt3DWindow();
-    view->defaultFrameGraph()->setClearColor(QColor(QRgb(0x4d4d4f)));
-    p->viewer = QWidget::createWindowContainer(view);
-
-    Qt3DCore::QEntity *rootEntity = new Qt3DCore::QEntity;
-    
-
-    for (std::size_t i = 0; i < p->moleculeFile->molecule().number_of_atoms(); ++i) {
-        const ccio::atom& atom = p->moleculeFile->molecule().atom(i);
-        const Eigen::Vector3d& centre = atom.centre();
-        QColor color = atomColor(atom);
-        float radius = atomDrawRadius(atom);
-        
-        Qt3DCore::QEntity* sphereEntity = new Qt3DCore::QEntity(rootEntity);
-        Qt3DExtras::QSphereMesh* sphereMesh = new Qt3DExtras::QSphereMesh;
-        sphereMesh->setRadius(radius);
-
-        Qt3DCore::QTransform* sphereTransform = new Qt3DCore::QTransform;
-        sphereTransform->setTranslation(QVector3D(centre.x(), centre.y(), centre.z()));
-
-        Qt3DExtras::QPhongMaterial *material = new Qt3DExtras::QPhongMaterial(sphereEntity);
-        material->setAmbient(color.darker(300));
-        material->setDiffuse(color);
-        material->setShininess(50);
-
-        sphereEntity->addComponent(sphereMesh);
-        sphereEntity->addComponent(sphereTransform);
-        sphereEntity->addComponent(material);
-    }
-
-    // Camera
-    Qt3DRender::QCamera *camera = view->camera();
-    camera->lens()->setPerspectiveProjection(45.0f, 16.0f/9.0f, 0.1f, 1000.0f);
-    camera->setPosition(QVector3D(0, 0, p->moleculeFile->molecule().radius() + 10.0f));
-    camera->setViewCenter(QVector3D(0, 0, 0));
-
-    view->setRootEntity(rootEntity);
-
+    ccio::out_file* outFile = dynamic_cast<ccio::out_file*>(p->viewer->chemFile().get());
     if (outFile) {
         p->jobsPanel = new molekulo::JobsPanel(outFile->tree(), this);
         p->ui.gridLayoutMain->addWidget(p->jobsPanel, 0, 0);
@@ -169,7 +112,7 @@ molekulo::MoleculeWindow::MoleculeWindow(std::unique_ptr<ccio::molecule_file> mo
         p->ui.gridLayoutMain->addWidget(p->summaryTextEdit, 0, 1);
         p->ui.gridLayoutMain->setColumnStretch(0, 1);
         p->ui.gridLayoutMain->setColumnStretch(1, 2);
-        // std::cout << p->ui.gridLayoutMain->columnCount() << std::endl;
+        std::cout << p->ui.gridLayoutMain->columnCount() << std::endl;
         // for (int i = 0; i < outFile->numberOfJobs(); ++i) {
         //     p->jobsPanel->addJob(outFile->job(i));
         // }
@@ -191,7 +134,7 @@ molekulo::MoleculeWindow::MoleculeWindow(std::unique_ptr<ccio::molecule_file> mo
 
     // Multistep Gaussian jobs
     //    molekulo::GaussianOutFile* gaussianOutFile =
-    //            dynamic_cast<molekulo::GaussianOutFile*>(p->moleculeFile.get());
+    //            dynamic_cast<molekulo::GaussianOutFile*>(p->viewer->chemFile().get());
     //    if (gaussianOutFile) {
     //        std::unique_ptr<molekulo::GaussianJob> job = gaussianOutFile->job(0);
     //    }
@@ -311,7 +254,7 @@ void molekulo::MoleculeWindow::openFile()
     if (!fileName.isEmpty()) {
         setDir(QFileInfo(fileName).absolutePath());
         try {
-            std::unique_ptr<ccio::text_file> textFile = ccio::molecule_file::newInstance(fileName.toStdString());
+            std::unique_ptr<ccio::text_file> textFile = ccio::molecule_file::new_instance(fileName.toStdString());
             textFile->read();
             ccio::molecule_file* m = dynamic_cast<ccio::molecule_file*>(textFile.get());
             if (m != nullptr) {
@@ -383,9 +326,8 @@ void molekulo::MoleculeWindow::showAboutDialog()
 
 void molekulo::MoleculeWindow::showViewerSettingsDialog()
 {
-    // FIX!
-    // molekulo::ViewerSettingsDialog* dialog = new molekulo::ViewerSettingsDialog(p->viewer);
-    // dialog->show();
+    molekulo::ViewerSettingsDialog* dialog = new molekulo::ViewerSettingsDialog(p->viewer);
+    dialog->show();
 }
 
 void molekulo::MoleculeWindow::showMolecule()
@@ -428,8 +370,7 @@ void molekulo::MoleculeWindow::updateActionsForNonemptyMolecule()
 
 void molekulo::MoleculeWindow::exportImage()
 {
-    // FIX!
-    // p->viewer->saveSnapshot(false, false);
+    p->viewer->saveSnapshot(false, false);
 }
 
 void molekulo::MoleculeWindow::exit()
@@ -446,14 +387,14 @@ void molekulo::MoleculeWindow::exit()
 
 void molekulo::MoleculeWindow::showFontDialogForLabelsOnAtoms()
 {
-    // p->viewer->setLabelsOnAtomsFont(QFontDialog::getFont(
-    //     0, p->viewer->labelsOnAtomsFont()));
+    p->viewer->setLabelsOnAtomsFont(QFontDialog::getFont(
+                                        0, p->viewer->labelsOnAtomsFont()));
 }
 
 void molekulo::MoleculeWindow::showFontDialogForLabelsOnBonds()
 {
-    // p->viewer->setLabelsOnBondsFont(QFontDialog::getFont(
-    //     0, p->viewer->labelsOnBondsFont()));
+    p->viewer->setLabelsOnBondsFont(QFontDialog::getFont(
+                                        0, p->viewer->labelsOnBondsFont()));
 }
 
 void molekulo::MoleculeWindow::tileWindows()

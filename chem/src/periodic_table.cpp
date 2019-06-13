@@ -51,7 +51,7 @@ struct ccio::periodic_table::periodic_table_private {
 };
 
 ccio::periodic_table::periodic_table() :
-    p(new periodic_table_private())
+    p(std::make_unique<periodic_table_private>())
 {
     p->elements.push_back(ccio::element(0, "X", "Dummy"));
 

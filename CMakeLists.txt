@@ -28,6 +28,9 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
         -Wno-shadow
         # Warns on BOOST_AUTO_TEST_CASE macro.
         -Wno-global-constructors
+        # qglviewer/vec.h
+        -Wno-gnu-anonymous-struct
+        -Wno-nested-anon-types
         -Wfatal-errors
         -Werror)
 elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
@@ -64,4 +67,5 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 add_subdirectory(io)
 add_subdirectory(chem)
 add_subdirectory(formats)
+add_subdirectory(qglviewer)
 add_subdirectory(molekulo)

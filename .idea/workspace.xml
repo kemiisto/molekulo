@@ -6,13 +6,15 @@
       <config projectName="molekulo_project" targetName="formats" />
       <config projectName="molekulo_project" targetName="test_chem" />
       <config projectName="molekulo_project" targetName="chem" />
+      <config projectName="molekulo_project" targetName="qglviewer_autogen" />
       <config projectName="molekulo_project" targetName="molekulo_autogen" />
+      <config projectName="molekulo_project" targetName="qglviewer" />
       <config projectName="molekulo_project" targetName="molekulo" />
       <config projectName="molekulo_project" targetName="io" />
       <config projectName="molekulo_project" targetName="test_formats" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" GENERATION_OPTIONS="-DCMAKE_BUILD_TYPE=Debug -DWITH_QT=5" GENERATION_DIR="$PROJECT_DIR$/../build/clion-debug" BUILD_OPTIONS="-j3">
         <ADDITIONAL_GENERATION_ENVIRONMENT>
@@ -24,7 +26,25 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5c1e8f6c-0cbb-41f4-9529-8ab12e48fe47" name="Default" comment="" />
+    <list default="true" id="5c1e8f6c-0cbb-41f4-9529-8ab12e48fe47" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chem/src/atom.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/chem/src/atom.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chem/src/bond.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/chem/src/bond.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chem/src/element.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/chem/src/element.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chem/src/molecule.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/chem/src/molecule.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chem/src/periodic_table.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/chem/src/periodic_table.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/formats/include/formats/text_file.h" beforeDir="false" afterPath="$PROJECT_DIR$/formats/include/formats/text_file.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/formats/src/job_sp_reader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/formats/src/job_sp_reader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/formats/src/text_file.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/formats/src/text_file.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/formats/test/test_chem_file.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/formats/test/test_chem_file.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/formats/test/test_util.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/formats/test/test_util.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/io/src/input_string_stream.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/io/src/input_string_stream.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/molekulo/src/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/molekulo/src/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/molekulo/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/molekulo/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/molekulo/src/molecule_window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/molekulo/src/molecule_window.cpp" afterDir="false" />
+    </list>
     <ignored path="code.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -46,31 +66,48 @@
     <favorites_list name="code" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+    <leaf>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+            <state relative-caret-position="437">
+              <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/molekulo/CMakeLists.txt">
+        <entry file="file://$PROJECT_DIR$/molekulo/src/molecule_window.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+            <state relative-caret-position="248">
+              <caret line="74" selection-start-line="74" selection-end-line="74" />
+              <folding>
+                <element signature="e#905#933#0" expanded="true" />
+                <element signature="e#1398#1427#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/molekulo/src/CMakeLists.txt">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/molekulo/src/render/viewer.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="282">
+              <caret line="113" column="45" lean-forward="true" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>new</find>
+      <find>ViewerSettingsDialog</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -80,53 +117,45 @@
         <option value="$PROJECT_DIR$/chem/src/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/io/src/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/formats/src/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/chem/src/atom.cpp" />
         <option value="$PROJECT_DIR$/chem/test/test_atom.cpp" />
         <option value="$PROJECT_DIR$/chem/include/chem/atom.h" />
         <option value="$PROJECT_DIR$/qglviewer/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/formats/src/job_sp_reader.cpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/molekulo/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/molekulo/src/render/cone.cpp" />
+        <option value="$PROJECT_DIR$/formats/src/text_file.cpp" />
+        <option value="$PROJECT_DIR$/chem/src/molecule.cpp" />
+        <option value="$PROJECT_DIR$/chem/src/atom.cpp" />
+        <option value="$PROJECT_DIR$/chem/src/bond.cpp" />
+        <option value="$PROJECT_DIR$/formats/src/job_sp_reader.cpp" />
+        <option value="$PROJECT_DIR$/io/src/input_string_stream.cpp" />
+        <option value="$PROJECT_DIR$/chem/src/periodic_table.cpp" />
+        <option value="$PROJECT_DIR$/chem/src/element.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/molekulo/src/render/gl.h" />
+        <option value="$PROJECT_DIR$/molekulo/src/molecule_window.cpp" />
         <option value="$PROJECT_DIR$/molekulo/src/render/viewer.cpp" />
       </list>
     </option>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="51" />
-    <option name="y" value="23" />
-    <option name="width" value="1389" />
-    <option name="height" value="877" />
+    <option name="width" value="2560" />
+    <option name="height" value="1440" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="molekulo_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="code" type="47feb1d3:ProjectViewModuleNode" />
-            </path>
-            <path>
-              <item name="molekulo_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="code" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="code" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/CMakeLists.txt" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -197,6 +226,16 @@
       </method>
     </configuration>
     <configuration name="molekulo_autogen" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="molekulo_project" TARGET_NAME="molekulo_autogen" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="qglviewer" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="molekulo_project" TARGET_NAME="qglviewer" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="qglviewer_autogen" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="molekulo_project" TARGET_NAME="qglviewer_autogen" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -281,6 +320,8 @@
       <item itemvalue="CMake Application.io" />
       <item itemvalue="CMake Application.molekulo" />
       <item itemvalue="CMake Application.molekulo_autogen" />
+      <item itemvalue="CMake Application.qglviewer" />
+      <item itemvalue="CMake Application.qglviewer_autogen" />
       <item itemvalue="CMake Application.test_chem" />
       <item itemvalue="CMake Application.test_formats" />
       <item itemvalue="CMake Application.test_io" />
@@ -310,30 +351,34 @@
       <workItem from="1560073958104" duration="259000" />
       <workItem from="1560074286769" duration="5000" />
       <workItem from="1560108924418" duration="102000" />
+      <workItem from="1560274256658" duration="1908000" />
+      <workItem from="1560284260010" duration="10000" />
+      <workItem from="1560445065954" duration="1573000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7012000" />
+    <option name="totallyTimeSpent" value="10503000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="0" width="2560" height="1440" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2453505" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13582209" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.55783135" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3270073" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="CMake" order="8" weight="0.1746988" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.329927" />
+      <window_info anchor="bottom" id="CMake" order="8" weight="0.11313868" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32771084" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3270073" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -361,20 +406,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/chem/src/molecule.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="102" column="42" selection-start-line="102" selection-start-column="42" selection-end-line="102" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chem/src/atom.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="834">
-          <caret line="64" column="33" selection-start-line="64" selection-start-column="33" selection-end-line="64" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chem/include/chem/atom.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -384,13 +415,6 @@
     </entry>
     <entry file="file://D:/Developer/libraries/eigen/3.2.5/Eigen/src/Core/util/Meta.h" />
     <entry file="file://D:/Developer/libraries/eigen/3.2.5/Eigen/src/Core/Dot.h" />
-    <entry file="file://$PROJECT_DIR$/chem/src/bond.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="95" column="1" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/chem/include/chem/bond.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-672">
@@ -412,33 +436,167 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/formats/src/job_sp_reader.cpp">
+    <entry file="file://$PROJECT_DIR$/qglviewer/CMakeLists.txt" />
+    <entry file="file://$PROJECT_DIR$/molekulo/src/render/cone.cpp" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/formats/src/text_file.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="80" column="60" selection-start-line="80" selection-start-column="60" selection-end-line="80" selection-end-column="60" />
+        <state relative-caret-position="146">
+          <caret line="48" column="36" selection-start-line="48" selection-start-column="36" selection-end-line="48" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/qglviewer/include/qglviewer/vec.h" />
-    <entry file="file://$PROJECT_DIR$/qglviewer/CMakeLists.txt" />
-    <entry file="file://$PROJECT_DIR$/molekulo/src/render/cone.cpp" />
-    <entry file="file://$PROJECT_DIR$/molekulo/src/render/viewer.cpp" />
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/molekulo/src/molecule_window.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="34" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
+        <state relative-caret-position="160">
+          <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chem/include/chem/molecule.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="44" column="32" selection-start-line="44" selection-start-column="32" selection-end-line="44" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/formats/src/job_sp_reader.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="52" column="45" selection-start-line="52" selection-start-column="45" selection-end-line="52" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chem/src/bond.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="47" column="36" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chem/src/atom.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="51" column="36" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chem/src/molecule.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="291">
+          <caret line="117" column="23" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/io/src/input_stream.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/io/src/input_string_stream.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chem/include/chem/periodic_table.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chem/src/element.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="48" column="29" selection-start-line="48" selection-start-column="29" selection-end-line="48" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chem/src/periodic_table.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="388">
+          <caret line="53" column="46" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qglviewer/include/qglviewer/vec.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1292">
+          <caret line="79" column="4" selection-start-line="79" selection-start-column="4" selection-end-line="79" selection-end-column="4" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/molekulo/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="238">
           <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/molekulo/src/render/gl.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="30" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/molekulo/src/render/char_renderer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/qglviewer/include/qglviewer/qglviewer.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3536">
+          <caret line="231" column="14" selection-start-line="231" selection-start-column="14" selection-end-line="231" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/molekulo/src/viewer_settings_dialog.cpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/molekulo/src/viewer_settings_dialog.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="353">
+          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/molekulo/src/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/molekulo/src/molecule_window.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="74" selection-start-line="74" selection-end-line="74" />
+          <folding>
+            <element signature="e#905#933#0" expanded="true" />
+            <element signature="e#1398#1427#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/molekulo/src/render/viewer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="113" column="45" lean-forward="true" selection-start-line="113" selection-start-column="45" selection-end-line="113" selection-end-column="45" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

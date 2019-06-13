@@ -7,14 +7,21 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-message(STATUS "Building with Qt5...")
-foreach(dep Core Concurrent Gui Widgets 3DCore 3DExtras 3DRender 3DInput)
-    add_definitions(${Qt5${dep}_DEFINITIONS})
-    include_directories(${Qt5${dep}_INCLUDE_DIRS})
-    list(APPEND QT_LIBRARIES ${Qt5${dep}_LIBRARIES})
-endforeach()
-
-add_definitions(-DQT3DEXTRAS_LIBRARY)
+if(WITH_QT EQUAL 5)
+    message(STATUS "Building with Qt5...")
+    foreach(dep Core Concurrent Gui OpenGL Xml)
+        message(STATUS ${dep})
+        add_definitions(${Qt5${dep}_DEFINITIONS})
+        include_directories(${Qt5${dep}_INCLUDE_DIRS})
+        list(APPEND QT_LIBRARIES ${Qt5${dep}_LIBRARIES})
+        message(STATUS ${QT_LIBRARIES})
+    endforeach()
+else()
+    include(${QT_USE_FILE})
+    add_definitions(${QT_DEFINITIONS})
+    set(QT_LIBRARIES Qt4::QtCore Qt4::QtGui Qt4::QtOpenGL Qt4::QtXml)
+endif()
+message(STATUS ${QT_LIBRARIES})
 
 file(GLOB_RECURSE SOURCES *.cpp)
 list(REMOVE_ITEM SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/log/logger.cpp)
@@ -25,9 +32,10 @@ include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
 
 add_executable(molekulo ${SOURCES} ${RESOURCES})
 target_link_libraries(
-    molekulo chem io formats
+    molekulo chem io formats qglviewer
     ${Boost_LIBRARIES}
     ${QT_LIBRARIES}
+	${OPENGL_LIBRARIES}
 )
 
 # Currently disabled for debugging, otherwise boost::property_tree::write_xml fails.

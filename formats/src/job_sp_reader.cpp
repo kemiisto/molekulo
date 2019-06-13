@@ -50,7 +50,7 @@ ccio::job_sp_reader::job_sp_reader(
         boost::property_tree::ptree& root,
         ccio::molecule& molecule) :
     job_reader(stream, root, "single point job", molecule),
-    p(new job_sp_reader_private())
+    p(std::make_unique<job_sp_reader_private>())
 {
     job_reader::tree().put("<xmlattr>.type", "Energy");
     job_reader::tree().put("<xmlattr>.done", false);
