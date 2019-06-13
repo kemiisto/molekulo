@@ -113,7 +113,7 @@ and can hence be used in place of Vec. See also operator const qreal*() .*/
   // Should NOT be explicit to prevent conflicts with operator<<.
 
   // ! Copy constructor
-  // Vec(const Vec& v) : x(v.x), y(v.y), z(v.z) {}
+  Vec(const Vec& v) : x(v.x), y(v.y), z(v.z) {}
 
   /*! Equal operator. */
   Vec &operator=(const Vec &v) {

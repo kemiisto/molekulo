@@ -110,9 +110,11 @@ molekulo::Viewer::Viewer(std::unique_ptr<ccio::molecule_file> chemFile) :
     labelsOnAtoms_(molekulo::Viewer::LabelsOnAtomsNone),
     labelsOnBonds_(molekulo::Viewer::LabelsOnBondsNone)
 {
+    // EXC_BAD_ACCESS under macOS
 //    setBackgroundColor(p->backgroundColor);
     setMouseBinding(Qt::ControlModifier, Qt::LeftButton, FRAME, TRANSLATE);
     camera()->frame()->setSpinningSensitivity(100.0f);
+
 }
 
 molekulo::Viewer::~Viewer()
