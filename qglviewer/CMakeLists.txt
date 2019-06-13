@@ -2,16 +2,12 @@
 
 project(qglviewer_project)
 
-if(WITH_QT EQUAL 5)
-    find_package(Qt5Core REQUIRED)
-    if(Qt5Core_FOUND)
-        set(HAVE_QT5 ON)
-        find_package(Qt5Gui REQUIRED)
-        find_package(Qt5OpenGL REQUIRED)
-        find_package(Qt5Xml REQUIRED)
-    endif()
-else()
-    find_package(Qt4 REQUIRED QtCore QtGui QtOpenGL QtXml)
+find_package(Qt5Core REQUIRED)
+if(Qt5Core_FOUND)
+    set(HAVE_QT5 ON)
+    find_package(Qt5Gui REQUIRED)
+    find_package(Qt5OpenGL REQUIRED)
+    find_package(Qt5Xml REQUIRED)
 endif()
 
 find_package(OpenGL REQUIRED)
