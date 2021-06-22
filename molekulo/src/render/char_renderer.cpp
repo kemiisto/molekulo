@@ -75,7 +75,7 @@ bool molekulo::CharRenderer::initialize( QChar c, const QFont &font, GLenum text
 
     // compute the size of the image to create
     const QFontMetrics fontMetrics ( font );
-    m_realwidth = fontMetrics.width(c);
+    m_realwidth = fontMetrics.horizontalAdvance(c);
     m_realheight = fontMetrics.height();
     if(m_realwidth == 0 || m_realheight == 0) return false;
     int texwidth  =  m_realwidth + 2 * OUTLINE_WIDTH;

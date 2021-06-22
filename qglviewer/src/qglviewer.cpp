@@ -159,8 +159,8 @@ void QGLViewer::defaultConstructor() {
 All viewer parameters (display flags, scene parameters, associated objects...)
 are set to their default values. See the associated documentation. */
 
-QGLViewer::QGLViewer(QWidget *parent, Qt::WindowFlags flags)
-    : QOpenGLWidget(parent, flags) {
+QGLViewer::QGLViewer(QWidget *parent)
+    : QOpenGLWidget(parent) {
   defaultConstructor();
 }
 

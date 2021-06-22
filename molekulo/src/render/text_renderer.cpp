@@ -254,7 +254,7 @@ int molekulo::TextRenderer::draw( const Eigen::Vector3f &pos, const QString &str
     if( string.isEmpty() ) return 0;
 
     const QFontMetrics fontMetrics ( d->font );
-    int w = fontMetrics.width(string);
+    int w = fontMetrics.horizontalAdvance(string);
     int h = fontMetrics.height();
 
     Eigen::Vector3f wincoords = d->glwidget->project(pos);

@@ -9,7 +9,7 @@ include_directories("../qglviewer/include")
 
 include_directories("src")
 
-find_package(Qt5 REQUIRED COMPONENTS Core Concurrent Gui Widgets 3DCore 3DExtras 3DRender 3DInput)
+find_package(Qt5 REQUIRED COMPONENTS Core Concurrent Gui Widgets)
 
 add_subdirectory(src)
 # add_subdirectory(test)

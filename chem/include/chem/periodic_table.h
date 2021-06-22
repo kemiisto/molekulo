@@ -24,6 +24,7 @@
 #define PERIODIC_TABLE_H
 
 #include <memory>
+#include <string>
 
 namespace ccio
 {

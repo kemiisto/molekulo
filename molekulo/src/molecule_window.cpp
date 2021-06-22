@@ -31,6 +31,7 @@
 #include <QFontDialog>
 #include <QInputDialog>
 #include <QMessageBox>
+#include <QScreen>
 #include <QSpinBox>
 #include <QSplitter>
 #if QT_VERSION >= QT_VERSION_CHECK(5, 0, 0)
@@ -399,8 +400,9 @@ void molekulo::MoleculeWindow::showFontDialogForLabelsOnBonds()
 
 void molekulo::MoleculeWindow::tileWindows()
 {
-    QDesktopWidget* desktop = QApplication::desktop();
-    QRect rect = desktop->availableGeometry();
+//    QDesktopWidget* desktop = QApplication::desktop();
+//    QRect rect = desktop->availableGeometry();
+    QRect rect = QGuiApplication::screens()[0]->availableGeometry();
     float aspectRatio = float(rect.width()) / rect.height();
     qDebug() << "aspect ratio = " << aspectRatio;
 

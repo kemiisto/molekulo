@@ -23,6 +23,7 @@
 #include "chem/element.h"
 
 #include <algorithm>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
