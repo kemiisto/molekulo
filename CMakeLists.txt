@@ -2,6 +2,8 @@
 
 project(molekulo_project)
 
+set(CMAKE_CXX_STANDARD 17)
+
 file(COPY chem/data DESTINATION bin)
 file(COPY molekulo/fonts DESTINATION bin)
 
@@ -14,7 +16,6 @@ include_directories("io/include")
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
     set(DEBUG_FLAGS -O0)
     set(RELEASE_FLAGS -O2)
-    set(STANDARD_FLAGS -std=c++14 -pedantic)
     set(WARNING_FLAGS
         # Turn on all the warnings, then turn few off.
 		-Wall -Wextra
@@ -36,8 +37,6 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
 elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
     set(DEBUG_FLAGS -Og)
     set(RELEASE_FLAGS -O2)
-    #set(STANDARD_FLAGS -std=c++14 -pedantic)
-    set(STANDARD_FLAGS -std=c++14)
     # gcc is notorious for reporting incorrect uninitialized variables
     # plus -Werror=attributes warns on qglviewer
     set(WARNING_FLAGS -Wall -Wextra -Wsign-compare -Wfatal-errors -Werror -Wno-error=maybe-uninitialized -Wno-error=attributes)

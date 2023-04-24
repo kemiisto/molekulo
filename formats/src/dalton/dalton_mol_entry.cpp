@@ -102,15 +102,15 @@ struct ccio::dalton_mol_entry::dalton_mol_entry_private
         molecule()
     {}
 
-    basis_type basis_type;
+    ccio::dalton_mol_entry::basis_type basis_type;
     std::string basis_set;
     std::string comment;
     unsigned int atom_types;
     std::vector<std::string> generators;
     double integrals_threshold;
     bool nosymmetry;
-    unit_of_length unit_of_length;
-    gaussians_type gaussians_type;
+    ccio::dalton_mol_entry::unit_of_length unit_of_length;
+    ccio::dalton_mol_entry::gaussians_type gaussians_type;
     std::map<unsigned int, std::string> basis_sets;
     ccio::molecule molecule;
 };

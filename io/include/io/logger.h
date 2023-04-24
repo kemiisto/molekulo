@@ -25,7 +25,9 @@
 
 #include <string>
 #include <boost/current_function.hpp>
+#ifndef BOOST_LOG_DYN_LINK
 #define BOOST_LOG_DYN_LINK
+#endif
 #include <boost/log/trivial.hpp>
 #include <boost/log/utility/setup.hpp>
 

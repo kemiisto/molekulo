@@ -2,12 +2,10 @@
 
 project(qglviewer_project)
 
-find_package(Qt5Core REQUIRED)
-if(Qt5Core_FOUND)
+set(Qt5_DIR /usr/local/opt/qt@5/lib/cmake/Qt5)
+find_package(Qt5 REQUIRED COMPONENTS Core Gui OpenGL Xml)
+if(Qt5_FOUND)
     set(HAVE_QT5 ON)
-    find_package(Qt5Gui REQUIRED)
-    find_package(Qt5OpenGL REQUIRED)
-    find_package(Qt5Xml REQUIRED)
 endif()
 
 find_package(OpenGL REQUIRED)
@@ -15,7 +13,7 @@ find_package(OpenGL REQUIRED)
 include_directories("include")
 
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-gnu-anonymous-struct -Wno-nested-anon-types -Wno-deprecated-declarations")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-gnu-anonymous-struct -Wno-nested-anon-types -Wno-deprecated-declarations -Wno-unused-but-set-variable")
 elseif("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-gnu-anonymous-struct -Wno-nested-anon-types -Wno-deprecated-declarations")
 endif()
